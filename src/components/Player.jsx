@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function Player({ name, symbol, isActive }) {
+function Player({ name, symbol, isActive, onChangeName }) {
   const [isEditing, setIsEditing] = useState(false);
   const [playerName, setPlayerName] = useState(name);
 
@@ -8,6 +8,9 @@ function Player({ name, symbol, isActive }) {
     // isEditing ? setIsEditing(false) : setIsEditing(true);
     // setIsEditing(!isEditing);
     setIsEditing((prevValue) => !prevValue);
+    if (isEditing) {
+      onChangeName(symbol, playerName);
+    }
   }
 
   function handleChange(e) {
